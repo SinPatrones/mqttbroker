@@ -1,0 +1,25 @@
+//MQTT broker
+var mosca = require('mosca');
+var db = require('./config/dbConnection');
+var momentTimeZone = require('moment-timezone');
+var settings = {port: 40001}
+var broker = new mosca.Server(settings)
+
+broker.on('ready',()=>{
+	console.log('Broker is ready!')
+})
+broker.on('published',(packet)=>{
+	console.log("Mensaje "+packet.payload.toString());
+	let date = momentTimeZone(new Date()).tz('america/Lima');
+	console.log("Fecha" + date.format('LTS') + " - "+date.format('L'));
+	const text = 'INSERT INTO mosquitodata (data,fecha,hora) VALUES ($1,$2,$3) RETURNING *'
+	const values = [packet.payload.toString()]
+	/*db.query(text,values,(err,res)=>{
+		if(err){
+			console.log(err.stack)
+		} else{
+			console.log(res.rows[0])
+		}
+	})*/
+
+})

@@ -1,0 +1,19 @@
+{
+  "name": "mosquito",
+  "version": "1.0.0",
+  "description": "mosquito",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "author": "smarttech",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.28",
+    "mosca": "^2.8.3",
+    "mqtt": "^3.0.0",
+    "pg": "^8.0.2"
+  }
+}
