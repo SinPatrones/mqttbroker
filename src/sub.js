@@ -1,7 +1,7 @@
 //MQTT Subscriber
 var mqtt = require('mqtt')
 var client = mqtt.connect('mqtt://localhost:40001')
-var topic = 'presence'
+var topic = 'app/data/1/receive'
 
 
 client.on('connect',()=>{
